@@ -1,4 +1,4 @@
-ID,Answer,Label (AI0/ Human1),Source
+ID,text,label,Source
 0,"Your choice. I personally didn't think so, so despite applying to all the top programs I didn't bother applying to UTM. Also you don't necessarily have to transfer, you can go into math or stats.",1,Reddit
 1,"i am righting a book, and the companion of the main character killed a general of the enemy, he had an untreatable condition, but instead of shooting him (had no medicine on hand) , he slit his rists, is the killing in theory more humane(if he shot him), then have him suffer until he dies due to injury.",1,Reddit
 2,The rings I’m wearing are gold. This has never happened before and I wear these rings all the time.,1,Reddit
@@ -3336,7 +3336,8 @@ timestamps {
 Note that the perform() method returns a boolean value indicating whether the execution was successful or not. You can use this value to determine whether the build should continue or not.
 
 
-",0,gpt
+
+",0,gpt
 384,"Most of the information I am finding on this is older than the newer version of Facebook API, and I really don't know my way around the Facebook API.
 
 Searching the developer section now seems to be mostly centered on their newer AI technologies, but I am simply interested in learning how to read from our Page's feed. Posting to our feed would be nice, too, but that would be down the line.
@@ -4475,7 +4476,8 @@ With these changes, your URLs should look like https://example.com/#/details/vie
 
 
 
-",0,gpt
+
+",0,gpt
 413,"The equivalent of NativeSearchQuery in Spring Data Elasticsearch 5.x and later versions is NativeSearchQueryBuilder from the package org.springframework.data.elasticsearch.core.SearchQueryBuilder. Here's an example:
 
 kotlin
@@ -5478,7 +5480,8 @@ Ultimately, it is up to you to decide how to proceed, but it is important to con
 
 
 
-",0,gpt
+
+",0,gpt
 461,"The issue is that the euro symbol € and the command \euro are not valid in math mode, which is the mode that the \qty command uses. To use the euro symbol in math mode, you can wrap it in the \text command provided by the amsmath package. Here's an updated MWE that should work:
 
 \documentclass{article}
@@ -5783,7 +5786,8 @@ The data represents hourly measurements of various air pollutants such as ozone,
 The dataset includes information such as the date and time of the measurement, the monitoring station ID, the latitude and longitude of the station, and the concentration of the pollutant in parts per million (ppm) or micrograms per cubic meter (µg/m³), depending on the pollutant. This data can be used to analyze and visualize the spatial and temporal variations of air pollution in the selected states over the years 2017-2021.
 
 
-",0,gpt
+
+",0,gpt
 491,"To download data from the Esri ArcGIS website:
 
 Visit the download page: https://esri.maps.arcgis.com/home/item.html?id=3c164274a80748dda926a046525da610&view=list&sortOrder=desc&sortField=defaultFSOrder#overview
