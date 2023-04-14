@@ -1,1 +1,2 @@
-bert-base-cased/
+/bert-base-cased
+/test_trainer

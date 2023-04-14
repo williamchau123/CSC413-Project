@@ -39,10 +39,12 @@ def compute_metrics(eval_pred):
     
 trainer = Trainer(
     model=model,
-    args=training_args,
+    args=args,
     train_dataset=train_set,
     eval_dataset=val_set,
     compute_metrics=compute_metrics,
 )
-trainer.train(resume_from_checkpoint=True)
-trainer.evaluate()
+train = trainer.train()
+evaluate = trainer.evaluate()
+print(train)
+print(evaluate)
