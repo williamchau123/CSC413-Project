@@ -1,0 +1,13 @@
+import pandas
+import numpy as np
+import matplotlib.pyplot as plt
+import csv
+import torch
+import torch.nn as nn
+import torch.optim as optim
+
+sentences = []
+for line in open("data.csv"):
+    words = line.split()
+    sentence = [word.lower() for word in words]
+    sentences.append(sentence)
