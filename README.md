@@ -1,31 +1,75 @@
 # CSC413-Project
-• Model:
+## Model:
 – A figure/diagram of the model architecture that demonstrates understanding of the steps involved in
 computing the forward pass
 – Count the number of parameters in the model, and a description of where the parameters come from
 – Examples of how the model performs on two actual examples from the test set: one successful and one
 unsuccessful
 
-• Data:
+For this project, we are using pre-trained BERT (Bidirectional Encoder Representations from Transformers) model and fine tune it using our dataset.
+The following diagram showed how BERT process the embedded word to output.
+
+![image](https://user-images.githubusercontent.com/55767924/232256506-2d9fb234-d826-4da2-a1b1-f3cc22014895.png)
+*[source](https://arxiv.org/abs/1810.04805v1)*
+
+Since the input contains multiple sentences, after the model tokenized each word, it will concatenate the sentences together.
+![image](https://user-images.githubusercontent.com/55767924/232256586-6d069de1-8673-41e4-9949-f7308f799a60.png)
+*[source](https://arxiv.org/abs/1810.04805v1)*
+
+There are in total 110M parameters according to https://huggingface.co/bert-base-uncased.
+
+### Examples:
+
+ - Success Prediction:
+
+ - Failed Prediction:
+
+
+## Data:
 – Describe the source of your data
 – Provide summary statistics of your data to help interpret your results (similar to in the proposal)
 – Describe how you transformed the data (e.g. any data augmentation techniques)
 – If appropriate to your project, describe how the train/validation/test set was split. (Note that splitting
 the training/validation/test set is not always straightforward!)
 
-• Training:
+For this project, since we are fine tuning our model, we only need a small set of data to train.
+
+We collected our data from searching for questions and discussions on open communication platforms (e.g. Reddit, StackOverflow, etc). Then, ask some questions to ChatGPT-4 for AI answers.
+
+### Summary:
+- Total number of data: 250 answers from human 250 answers from GPT-4, 500 in total.
+- The labels of  the question will  be only  questions and answers and the targets will be 0 = AI generated and 1 = Human generated.
+- We decided to have 200 answers for the training set, 200 answers for the validation set and 100 answers for the test set. Each contains same numbers of answers from human and AI. 
+
+In order to be used in BERT model, we tokenized the input using the builtin function from AutoTokenizer by Hugging Face. Since the model has input limit, we truncated the inputs, also added padding to shorter inputs to reduce bias on input length.
+
+
+## Training:
 – The training curve of your final model
 – A description how you tuned hyper-parameters
 
-• Results:
+The diagram below is our training curve of our final model:
+
+
+### Hyper-parameters
+
+## Results:
 – Describe the quantitative measure that you are using to evaluate your result
 – Describe the quantitative and qualitative results
 – A justification that your implemented method performed reasonably, given the difficulty of the problem—or
 a hypothesis for why it doesn’t (this is extremely important)
 
-• Ethical Consideration:
+
+
+## Ethical Consideration:
 – Description of a use of the system that could give rise to ethical issues. Are there limitations of your
 model? Your training data?
 
-• Authors
+## Authors
 – A description of how the work was split—i.e. who did what in this project.
+
+Collecting data
+
+William Chau - Implement the model
+
+Tune the model
