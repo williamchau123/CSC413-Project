@@ -49,9 +49,13 @@ args = TrainingArguments(
 training_args = TrainingArguments(output_dir="test_trainer")
 
 metric = evaluate.load("accuracy")
+
+
 def compute_metrics(eval_pred):
     logits, labels = eval_pred
+    print(labels)
     predictions = np.argmax(logits, axis=-1)
+    print(len(predictions))
     return metric.compute(predictions=predictions, references=labels)
 
 trainer = Trainer(
@@ -59,10 +63,6 @@ trainer = Trainer(
     args=args,
     train_dataset=train_set,
     eval_dataset=val_set,
-    compute_metrics=compute_metrics,
-)
-
-def plot():
     print(trainer.state.log_history)
     losses, iters, acc = [], [], []
     for epoch in trainer.state.log_history[:-1]:
