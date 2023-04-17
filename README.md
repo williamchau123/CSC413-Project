@@ -67,7 +67,7 @@ We start as a bigger value with alpha 0.01 and find out it is too big that make 
 For the number of epoches to train the model, we started from 5 and 10, which the model only predicts 1 as the output. Once we increase the epoches to 20 and above, the model starts to have correct prediction.
 
 - Weight Decay:
-
+For the weight decay, we start with 0.01 to tune and decrease it slowly. It turns out the weights decay does not influence our model much. Therefore, we choose the 0.001 which has the best performance to avoid overfit. 
 
 ## Results:
 – Describe the quantitative measure that you are using to evaluate your result
