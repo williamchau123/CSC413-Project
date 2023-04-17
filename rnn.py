@@ -53,8 +53,8 @@ metric = evaluate.load("accuracy")
 
 def compute_metrics(eval_pred):
     logits, labels = eval_pred
-    print(labels)
     predictions = np.argmax(logits, axis=-1)
+    print(predictions)
     print(len(predictions))
     return metric.compute(predictions=predictions, references=labels)
 
