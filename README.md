@@ -1,4 +1,7 @@
 # CSC413-Project
+
+OpenAI’s new NLP model, ChatGPT-4, has been used by many people in different fields. As it can produce responses within seconds, overflowing the internet using the responses without people noticing can be a hidden hazard. We decided to train a Transformer model to identifies AI responses in Open Communication Forms (e.g. Reddit, StackOverflow, etc) to help people to distinguish human response and AI response.
+
 ## Model:
 – A figure/diagram of the model architecture that demonstrates understanding of the steps involved in
 computing the forward pass
@@ -12,7 +15,8 @@ The following diagram showed how BERT process the embedded word to output.
 ![image](https://user-images.githubusercontent.com/55767924/232256506-2d9fb234-d826-4da2-a1b1-f3cc22014895.png)
 *[source](https://arxiv.org/abs/1810.04805v1)*
 
-Since the input contains multiple sentences, after the model tokenized each word, it will concatenate the sentences together.
+Since the input contains multiple sentences, after tokenized each word and concatenate the sentences together, it will be process the same way into the model.
+
 ![image](https://user-images.githubusercontent.com/55767924/232256586-6d069de1-8673-41e4-9949-f7308f799a60.png)
 *[source](https://arxiv.org/abs/1810.04805v1)*
 
@@ -53,17 +57,29 @@ The diagram below is our training curve of our final model:
 
 ### Hyper-parameters
 
+- Learning rate:
+
+- Epoches:
+For the number of epoches to train the model, we started from 5 and 10, which the model only predicts 1 as the output. Once we increase the epoches to 20 and above, the model starts to have correct prediction.
+
+- Weight Decay:
+
 ## Results:
 – Describe the quantitative measure that you are using to evaluate your result
 – Describe the quantitative and qualitative results
 – A justification that your implemented method performed reasonably, given the difficulty of the problem—or
 a hypothesis for why it doesn’t (this is extremely important)
 
+We used test set that was part of the original dataset and measure its accuracy from our model.
+We obtained around 87% test accuracy which is reasonably reliable.
 
+Our method preformed relatively well given our problem of identifying AI response. 
 
 ## Ethical Consideration:
 – Description of a use of the system that could give rise to ethical issues. Are there limitations of your
 model? Your training data?
+
+
 
 ## Authors
 – A description of how the work was split—i.e. who did what in this project.
