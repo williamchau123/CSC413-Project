@@ -34,7 +34,6 @@ val_set = concatenate_datasets([tokenized_redit.select(range(50, 100)), tokenize
                                 tokenized_gpt_redit.select(range(50, 100)), tokenized_gpt_stack.select(range(50, 100))]).shuffle(seed=42)
 test_set = concatenate_datasets([tokenized_redit.select(range(100, 125)), tokenized_stack.select(range(100, 125)),
                                  tokenized_gpt_redit.select(range(100, 125)), tokenized_gpt_stack.select(range(100, 125))]).shuffle(seed=42)
-
 args = TrainingArguments(
     evaluation_strategy="epoch",
     save_strategy="epoch",
@@ -88,6 +87,7 @@ evaluate = trainer.evaluate()
 print(train)
 print(evaluate)
 plot()
+# print(test_set.select(range(2)))
 pred = trainer.predict(test_set)
 print(pred)
 print(pred.metrics)
