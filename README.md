@@ -54,15 +54,20 @@ In order to be used in BERT model, we tokenized the input using the builtin func
 
 The diagram below is our training curve of our final model:
 
+![91e98ba08b41d8637fc01da3bd9cb08](https://user-images.githubusercontent.com/83336699/232581044-9b0f014f-8680-4abf-a617-8815dbbe1df7.png)
+![68821f921a0b5ed9dec3a347667ed6c](https://user-images.githubusercontent.com/83336699/232581062-5a4fb286-8236-4d60-8aed-de90cf46fb6e.png)
+
 
 ### Hyper-parameters
 
-- Learning rate:
+- Learning rate: 
+We start as a bigger value with alpha 0.01 and find out it is too big that make our loss and accuracy bounce frequently in the graph. Therefore, we slowly descrease its value and find out 1e-6 provide us the best validation accuracy and learning curve.
 
 - Epoches:
 For the number of epoches to train the model, we started from 5 and 10, which the model only predicts 1 as the output. Once we increase the epoches to 20 and above, the model starts to have correct prediction.
 
 - Weight Decay:
+
 
 ## Results:
 – Describe the quantitative measure that you are using to evaluate your result
@@ -84,8 +89,8 @@ model? Your training data?
 ## Authors
 – A description of how the work was split—i.e. who did what in this project.
 
-Collecting data
+Yuxuan Mu - Collecting data
 
-William Chau - Implement the model
+William Chau - Implement the model, Tune the model
 
-Tune the model
+HanchengHuang - Tune the model, Implement the model
