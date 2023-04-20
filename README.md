@@ -80,8 +80,6 @@ Our method preformed relatively well given our problem of identifying AI respons
 
 ## Authors
 
-Yuxuan Mu - Collecting data
+Yuxuan Mu - Collecting data from online platform and ask the questions on chatGPT. While training the model, prepare test data.
 
-William Chau - Implement the model, Tune the model
-
-HanchengHuang - Tune the model, Implement the model
+William Chau and HanchengHuang - Implement the model using Hugging Face and prepare for the fine tuning. Once the dataset is ready, tune the hyperparameters and collect the result.
