@@ -36,6 +36,7 @@ test_set = concatenate_datasets([tokenized_redit.select(range(100, 125)), tokeni
                                  tokenized_gpt_redit.select(range(100, 125)), tokenized_gpt_stack.select(range(100, 125))]).shuffle(seed=42)
 args = TrainingArguments(
     evaluation_strategy="epoch",
+    logging_strategy="epoch",
     save_strategy="epoch",
     learning_rate=1e-6,
     num_train_epochs=20,
@@ -43,7 +44,7 @@ args = TrainingArguments(
     load_best_model_at_end=True,
     output_dir="test_trainer",
     metric_for_best_model="accuracy",
-    report_to="none"
+    report_to="none",
     # resume_from_checkpoint=True
 )
 training_args = TrainingArguments(output_dir="test_trainer")
@@ -65,18 +66,30 @@ trainer = Trainer(
 def plot():
     print(trainer.state.log_history)
     losses, iters, acc = [], [], []
-    for epoch in trainer.state.log_history[:-1]:
-        if 'eval_loss' in epoch:
+    losses_train, epochs = [], []
+    for i, epoch in enumerate(trainer.state.log_history[:-1]):
+        if 'loss' in epoch:
+            print(epoch)
+            losses_train.append(epoch["loss"])
+            epochs.append(epoch["epoch"])
+        elif 'eval_loss' in epoch:
             losses.append(epoch['eval_loss'])
             iters.append(epoch['epoch'])
             acc.append(epoch['eval_accuracy'])
-    plt.title("Learning Curve")
+
+    plt.title("Train Learning Curve")
+    plt.plot(epochs, losses_train, label="Train Loss")
+    plt.xlabel("Epochs")
+    plt.ylabel("Loss")
+    plt.show()
+
+    plt.title("Valid Learning Curve")
     plt.plot(iters, losses, label="Valid Loss")
     plt.xlabel("Epochs")
     plt.ylabel("Loss")
     plt.show()
 
-    plt.title("Learning Curve")
+    plt.title("Valid Learning Curve")
     plt.plot(iters, acc, label="Valid Accuracy")
     plt.xlabel("Epochs")
     plt.ylabel("Accuracy")
