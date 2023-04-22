@@ -49,6 +49,7 @@ In order to be used in BERT model, we tokenized the input using the builtin func
 ## Training:
 
 The diagram below is our training curve of our final model:
+![image](https://user-images.githubusercontent.com/83336699/233804230-f64fdef0-5211-43aa-8087-e8795e188a5d.png)
 
 ![91e98ba08b41d8637fc01da3bd9cb08](https://user-images.githubusercontent.com/83336699/232581044-9b0f014f-8680-4abf-a617-8815dbbe1df7.png)
 ![68821f921a0b5ed9dec3a347667ed6c](https://user-images.githubusercontent.com/83336699/232581062-5a4fb286-8236-4d60-8aed-de90cf46fb6e.png)
