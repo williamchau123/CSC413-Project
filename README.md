@@ -51,8 +51,8 @@ In order to be used in BERT model, we tokenized the input using the builtin func
 The diagram below is our training curve of our final model:
 
 ![image](https://user-images.githubusercontent.com/83336699/233804230-f64fdef0-5211-43aa-8087-e8795e188a5d.png)
-![91e98ba08b41d8637fc01da3bd9cb08](https://user-images.githubusercontent.com/83336699/232581044-9b0f014f-8680-4abf-a617-8815dbbe1df7.png)
-![68821f921a0b5ed9dec3a347667ed6c](https://user-images.githubusercontent.com/83336699/232581062-5a4fb286-8236-4d60-8aed-de90cf46fb6e.png)
+![f06681479e94ec39989a53ea3b0f23a](https://user-images.githubusercontent.com/83336699/233804496-2f490243-52ba-498c-8726-370f8d63874e.png)
+![70c579a8399ec02ce20977539f98110](https://user-images.githubusercontent.com/83336699/233804499-62c5ae50-418d-4a08-b440-9d417299f99c.png)
 
 
 ### Hyper-parameters
