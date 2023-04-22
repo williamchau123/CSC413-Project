@@ -63,6 +63,10 @@ trainer = Trainer(
     args=args,
     train_dataset=train_set,
     eval_dataset=val_set,
+    compute_metrics=compute_metrics,	
+)
+
+def plot():
     print(trainer.state.log_history)
     losses, iters, acc = [], [], []
     for epoch in trainer.state.log_history[:-1]:
