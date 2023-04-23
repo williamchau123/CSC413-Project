@@ -13,6 +13,14 @@ stack = df["train"].select(range(125, 250)).shuffle(seed=42)
 gpt_redit = df["train"].select(range(250, 375)).shuffle(seed=42)
 gpt_stack = df["train"].select(range(375, 500)).shuffle(seed=42)
 
+gpt_df2 = load_dataset("csv", data_files="gpt.csv")
+human_df2 = load_dataset("csv", data_files="human.csv")
+gpt_df2 = gpt_df2.remove_columns(['ID', 'Source'])
+human_df2 = human_df2.remove_columns(['ID', 'Source'])
+gpt_df2 = gpt_df2["train"].shuffle(seed=42)
+human_df2 = human_df2["train"].shuffle(seed=42)
+
+
 tokenizer = AutoTokenizer.from_pretrained("roberta-base-openai-detector")
 # for internet connection error, please download the model from https://huggingface.co/bert-base-cased and place the
 # folder in the same directory model = AutoModelForSequenceClassification.from_pretrained("./bert-base-cased",
@@ -28,6 +36,8 @@ tokenized_redit = redit.map(tokenize_function, batched=True)
 tokenized_stack = stack.map(tokenize_function, batched=True)
 tokenized_gpt_redit = gpt_redit.map(tokenize_function, batched=True)
 tokenized_gpt_stack = gpt_stack.map(tokenize_function, batched=True)
+tokenized_gpt_stack2 = gpt_df2.map(tokenize_function, batched=True)
+tokenized_human_stack2 = human_df2.map(tokenize_function, batched=True)
 train_set = concatenate_datasets([tokenized_redit.select(range(50)), tokenized_stack.select(range(50)),
                                   tokenized_gpt_redit.select(range(50)), tokenized_gpt_stack.select(range(50))]).shuffle(seed=42)
 val_set = concatenate_datasets([tokenized_redit.select(range(50, 100)), tokenized_stack.select(range(50, 100)),
@@ -47,60 +57,59 @@ args = TrainingArguments(
     report_to="none",
     # resume_from_checkpoint=True
 )
-training_args = TrainingArguments(output_dir="test_trainer")
 
-metric = evaluate.load("accuracy")
-def compute_metrics(eval_pred):
-    logits, labels = eval_pred
-    predictions = np.argmax(logits, axis=-1)
-    return metric.compute(predictions=predictions, references=labels)
+# metric = evaluate.load("accuracy")
+# def compute_metrics(eval_pred):
+#     logits, labels = eval_pred
+#     predictions = np.argmax(logits, axis=-1)
+#     return metric.compute(predictions=predictions, references=labels)
 
-trainer = Trainer(
-    model=model,
-    args=args,
-    train_dataset=train_set,
-    eval_dataset=val_set,
-    compute_metrics=compute_metrics,
-)
+# trainer = Trainer(
+#     model=model,
+#     args=args,
+#     train_dataset=train_set,
+#     eval_dataset=val_set,
+#     compute_metrics=compute_metrics,
+# )
 
-def plot():
-    print(trainer.state.log_history)
-    losses, iters, acc = [], [], []
-    losses_train, epochs = [], []
-    for i, epoch in enumerate(trainer.state.log_history[:-1]):
-        if 'loss' in epoch:
-            print(epoch)
-            losses_train.append(epoch["loss"])
-            epochs.append(epoch["epoch"])
-        elif 'eval_loss' in epoch:
-            losses.append(epoch['eval_loss'])
-            iters.append(epoch['epoch'])
-            acc.append(epoch['eval_accuracy'])
+# def plot():
+#     print(trainer.state.log_history)
+#     losses, iters, acc = [], [], []
+#     losses_train, epochs = [], []
+#     for i, epoch in enumerate(trainer.state.log_history[:-1]):
+#         if 'loss' in epoch:
+#             print(epoch)
+#             losses_train.append(epoch["loss"])
+#             epochs.append(epoch["epoch"])
+#         elif 'eval_loss' in epoch:
+#             losses.append(epoch['eval_loss'])
+#             iters.append(epoch['epoch'])
+#             acc.append(epoch['eval_accuracy'])
 
-    plt.title("Train Learning Curve")
-    plt.plot(epochs, losses_train, label="Train Loss")
-    plt.xlabel("Epochs")
-    plt.ylabel("Loss")
-    plt.show()
+#     plt.title("Train Learning Curve")
+#     plt.plot(epochs, losses_train, label="Train Loss")
+#     plt.xlabel("Epochs")
+#     plt.ylabel("Loss")
+#     plt.show()
 
-    plt.title("Valid Learning Curve")
-    plt.plot(iters, losses, label="Valid Loss")
-    plt.xlabel("Epochs")
-    plt.ylabel("Loss")
-    plt.show()
+#     plt.title("Valid Learning Curve")
+#     plt.plot(iters, losses, label="Valid Loss")
+#     plt.xlabel("Epochs")
+#     plt.ylabel("Loss")
+#     plt.show()
 
-    plt.title("Valid Learning Curve")
-    plt.plot(iters, acc, label="Valid Accuracy")
-    plt.xlabel("Epochs")
-    plt.ylabel("Accuracy")
-    plt.show()
+#     plt.title("Valid Learning Curve")
+#     plt.plot(iters, acc, label="Valid Accuracy")
+#     plt.xlabel("Epochs")
+#     plt.ylabel("Accuracy")
+#     plt.show()
 
-train = trainer.train()
-evaluate = trainer.evaluate()
-print(train)
-print(evaluate)
-plot()
-# print(test_set.select(range(2)))
-pred = trainer.predict(test_set)
-print(pred)
-print(pred.metrics)
+# train = trainer.train()
+# evaluate = trainer.evaluate()
+# print(train)
+# print(evaluate)
+# plot()
+# # print(test_set.select(range(2)))
+# pred = trainer.predict(test_set)
+# print(pred)
+# print(pred.metrics)
