@@ -83,9 +83,9 @@ Our method preformed relatively well given our problem of identifying AI respons
 ### Negative Side: 
 
 - Our model may provide inaccurate output based on bias which may lead to human unfair judgment or incorrect decisions. As a result, it may be an offense against certain authors who are wrongly assumed to have authored AI-generated text. 
-
-- Our model could raise privacy problems for people who wish to remain anonymous for their text. In addition, it could raise privacy concerns for the group who do not want their text to be identified as AI-generated. The model has ethical implications in free speech. 
-
+- On the other hand, our model could raise privacy problems for people who wish to remain anonymous for their text. In addition, it could raise privacy concerns for the group who do not want their text to be identified as AI-generated. The model has ethical implications in free speech. 
+- There are limitation in our training data. For the training data in our study, our data is limited with stackover flow or reddit only which is not full fill the questions or the sentences that the users would ask in Chatgpt. Other questions from other sources may affect the result of our data. In addition, in our data, the questions are more likely to be general questions instead of questions in specific area. Different types questions or different ways to implement question may also influence the result of Chatgpt products which will increase the bias in out model. 
+- In our training data, there will also be a bais for the questions that violates the rules or the terms of services for Chatgpt. These questions would cause Chatgpt give highly similar error messages which will influences the result that were expected. 
 
 ## Authors
 
