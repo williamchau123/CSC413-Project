@@ -67,6 +67,7 @@ For the weight decay, we start with 0.01 to tune and decrease it slowly. It turn
 ## Results:
 
 We used test set that was part of the original dataset and measure its accuracy from our model.
+There are 200 data being select from the 1000 original dataset as test set.
 We obtained around 87.5% test accuracy which is reasonably reliable.
 
 Our method preformed relatively well given our problem of identifying AI response. 
