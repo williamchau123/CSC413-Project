@@ -56,7 +56,7 @@ The diagram below is our training curve of our final model:
 ### Hyper-parameters
 
 - Learning rate: 
-We start as a bigger value with alpha 0.01 and find out it is too big that make our loss and accuracy bounce frequently in the graph. Therefore, we slowly descrease its value and find out 1e-6 provide us the best validation accuracy and learning curve.
+We start as a bigger value with alpha 0.01 and find out it is too big that make our loss and accuracy bounce frequently in the graph. Therefore, we slowly descrease its value and find out 1e-7 provide us the best validation accuracy and learning curve.
 
 - Epoches:
 For the number of epoches to train the model, we started from 5 and 10, which the model only predicts 1 as the output. Once we increase the epoches to 20 and above, the model starts to have correct prediction.
@@ -67,7 +67,7 @@ For the weight decay, we start with 0.01 to tune and decrease it slowly. It turn
 ## Results:
 
 We used test set that was part of the original dataset and measure its accuracy from our model.
-We obtained around 87% test accuracy which is reasonably reliable.
+We obtained around 87.5% test accuracy which is reasonably reliable.
 
 Our method preformed relatively well given our problem of identifying AI response. 
 
