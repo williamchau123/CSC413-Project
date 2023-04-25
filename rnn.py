@@ -55,7 +55,7 @@ args = TrainingArguments(
     evaluation_strategy="epoch",
     logging_strategy="epoch",
     save_strategy="epoch",
-    learning_rate=1e-7,
+    learning_rate=5e-7,
     num_train_epochs=20,
     weight_decay=0.01,
     load_best_model_at_end=True,
@@ -111,6 +111,19 @@ def plot():
     plt.ylabel("Accuracy")
     plt.show()
 
+def qualitative():
+    print("Qualitative")
+    gpt_set = test_set.select(i for i in range(len(test_set)) if test_set["label"][i] == 0)
+    gpt_set = gpt_set.select(range(10))
+    human_set = test_set.select(i for i in range(len(test_set)) if test_set["label"][i] == 1)
+    human_set = human_set.select(range(10))
+    pred_gpt = trainer.predict(gpt_set)
+    pred_human = trainer.predict(human_set)
+    print(pred_gpt)
+    print(pred_gpt.metrics)
+    print(pred_human)
+    print(pred_human.metrics)
+
 train = trainer.train()
 evaluate = trainer.evaluate()
 print(train)
@@ -120,3 +133,4 @@ plot()
 pred = trainer.predict(test_set)
 print(pred)
 print(pred.metrics)
+qualitative()
